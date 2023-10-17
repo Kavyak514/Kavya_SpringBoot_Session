@@ -18,7 +18,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/saveEmployee")
-    public Employee saveEmployee(@RequestBody Employee employee) {
+    public Response saveEmployee(@RequestBody Employee employee) {
         return employeeService.saveEmployee(employee);
     }
 
@@ -33,7 +33,7 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/deleteEmployee/{id}")
-    public String deleteEmployee(@PathVariable String id) {
+    public String deleteEmployee(@PathVariable int id) {
         return employeeService.deleteEmployee(id);
     }
 
@@ -48,7 +48,7 @@ public class EmployeeController {
     }
 
     @PatchMapping("/updatePartialEmployeeData/{id}")
-    public Employee updatePartialEmployeeData(@PathVariable String id, @RequestBody Map<String, Object> map) {
+    public Employee updatePartialEmployeeData(@PathVariable int id, @RequestBody Map<String, Object> map) {
         return employeeService.updatePartialEmployeeData(id, map);
     }
 }

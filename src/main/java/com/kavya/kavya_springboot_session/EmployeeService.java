@@ -20,15 +20,21 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    public Employee saveEmployee(Employee employee) {
-        return employeeRepository.save(employee);
+    public Response saveEmployee(Employee employee) {
+        Response response = new Response();
+        Employee employee1 = employeeRepository.save(employee);
+        response.setMessage("Successfully Inserted");
+        response.setStatus("200");
+        response.setEmployee(employee1);
+        return response;
     }
+
 
     public List<Employee> getAllEmployee() {
         return employeeRepository.findAll();
     }
 
-    public String deleteEmployee(String id) {
+    public String deleteEmployee(int id) {
         if (employeeRepository.findById(id).isPresent()) {
             employeeRepository.deleteById(id);
             return "Successfully Deleted";
@@ -63,7 +69,7 @@ public class EmployeeService {
         return employee;
     }
 
-    public Employee updatePartialEmployeeData(String id, Map<String, Object> map) {
+    public Employee updatePartialEmployeeData(int id, Map<String, Object> map) {
         Optional<Employee> employee2 = employeeRepository.findById(id);
         if (employee2.isPresent()) {
             for (Map.Entry<String, Object> entry : map.entrySet()) {

@@ -1,8 +1,6 @@
 package com.kavya.kavya_springboot_session;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
@@ -12,7 +10,8 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 public class Employee {
     @Id
     @XmlElement
-    private String employeeId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int employeeId;
     @XmlElement
     private double salary;
     @XmlElement
@@ -28,11 +27,11 @@ public class Employee {
         this.companyNames = companyNames;
     }
 
-    public String getEmployeeId() {
+    public int getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(String employeeId) {
+    public void setEmployeeId(int employeeId) {
         this.employeeId = employeeId;
     }
 
