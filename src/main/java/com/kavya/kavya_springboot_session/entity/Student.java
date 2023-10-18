@@ -1,8 +1,6 @@
 package com.kavya.kavya_springboot_session.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +11,7 @@ import lombok.Setter;
 @Setter
 public class Student {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int sid;
     private String sName;
     private String collegeId;

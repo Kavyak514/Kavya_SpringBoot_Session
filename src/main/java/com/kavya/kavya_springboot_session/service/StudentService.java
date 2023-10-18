@@ -1,11 +1,11 @@
 package com.kavya.kavya_springboot_session.service;
 
+import com.kavya.kavya_springboot_session.dto.Response;
 import com.kavya.kavya_springboot_session.entity.Student;
 import com.kavya.kavya_springboot_session.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,11 +17,15 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-    public void createStudent(Student student){
-        studentRepository.save(student);
+    public Response createStudent(Student student){Response response = new Response();
+        Student student1 = studentRepository.save(student);
+        response.setMessage("Successfully Inserted");
+        response.setStatus("200");
+        response.setStudent(student1);
+        return response;
     }
 
-    public String updateStudent(Student student, int id){
+    public String updateStudent(int id){
         String message = "";
         Optional<Student> exisitngStudednt = studentRepository.findById(id);
         if(exisitngStudednt.isPresent()){
@@ -33,7 +37,15 @@ public class StudentService {
         return message;
     }
 
-    public List<Student> getStudent(){
-        return studentRepository.findAll();
+    public Response getStudent(){
+        Response response = new Response();
+        response.setMessage("Successfully Retrieved");
+        response.setStatus("200");
+        response.setStudentList(studentRepository.findAll());
+        return response;
+    }
+
+    public Optional<Student> getStudentById(int id) {
+        return studentRepository.findById(id);
     }
 }

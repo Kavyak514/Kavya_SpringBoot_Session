@@ -1,11 +1,12 @@
 package com.kavya.kavya_springboot_session.controller;
 
+import com.kavya.kavya_springboot_session.dto.Response;
 import com.kavya.kavya_springboot_session.service.StudentService;
 import com.kavya.kavya_springboot_session.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class StudentController {
@@ -17,17 +18,23 @@ public class StudentController {
     }
 
     @PostMapping("/createStudent")
-    public void createStudent(@RequestBody Student student){
-        studentService.createStudent(student);
+    public Response createStudent(@RequestBody Student student) {
+        return studentService.createStudent(student);
     }
 
     @PutMapping("/updateStudent/{id}")
-    public void updateStudent(@RequestBody Student student, @PathVariable int id){
-        studentService.updateStudent(student, id);
+    public String updateStudent(@PathVariable int id) {
+        return studentService.updateStudent(id);
     }
 
     @GetMapping("/getStudent")
-    public List<Student> getStudent() {
+    public Response getStudent() {
         return studentService.getStudent();
+    }
+
+    @GetMapping("/getStudentById/{id}")
+    public Student getStudent(@PathVariable int id) {
+        Optional<Student> student = studentService.getStudentById(id);
+        return student.orElse(null);
     }
 }
