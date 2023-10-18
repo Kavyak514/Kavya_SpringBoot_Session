@@ -1,4 +1,4 @@
-package com.kavya.kavya_springboot_session;
+package com.kavya.kavya_springboot_session.model;
 
 import jakarta.persistence.*;
 import jakarta.xml.bind.annotation.XmlElement;
