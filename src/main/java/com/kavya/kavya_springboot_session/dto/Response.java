@@ -1,6 +1,6 @@
 package com.kavya.kavya_springboot_session.dto;
 
-import com.kavya.kavya_springboot_session.model.Employee;
+import com.kavya.kavya_springboot_session.entity.Employee;
 
 public class Response {
     private String status;

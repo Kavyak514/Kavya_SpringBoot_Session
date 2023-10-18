@@ -1,7 +1,7 @@
 package com.kavya.kavya_springboot_session.controller;
 
-import com.kavya.kavya_springboot_session.Service.StudentService;
-import com.kavya.kavya_springboot_session.model.Student;
+import com.kavya.kavya_springboot_session.service.StudentService;
+import com.kavya.kavya_springboot_session.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +27,7 @@ public class StudentController {
     }
 
     @GetMapping("/getStudent")
-    public List<Student> getStudent(){
+    public List<Student> getStudent() {
         return studentService.getStudent();
     }
 }

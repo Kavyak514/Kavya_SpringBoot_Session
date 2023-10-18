@@ -1,8 +1,8 @@
 package com.kavya.kavya_springboot_session.controller;
 
-import com.kavya.kavya_springboot_session.Service.EmployeeService;
+import com.kavya.kavya_springboot_session.service.EmployeeService;
 import com.kavya.kavya_springboot_session.dto.Response;
-import com.kavya.kavya_springboot_session.model.Employee;
+import com.kavya.kavya_springboot_session.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -26,12 +26,12 @@ public class EmployeeController {
     }
 
     @GetMapping("/getEmployee")
-    public List<Employee> getAllEmployee() {
+    public Iterable<Employee> getAllEmployee() {
         return employeeService.getAllEmployee();
     }
 
     @GetMapping(value = "/getEmployeeXmlFormat", produces = {"application/xml", "text/xml"}, consumes = MediaType.ALL_VALUE)
-    public List<Employee> getEmployeeXmlFormat() {
+    public Iterable<Employee> getEmployeeXmlFormat() {
         return employeeService.getAllEmployee();
     }
 
@@ -53,5 +53,15 @@ public class EmployeeController {
     @PatchMapping("/updatePartialEmployeeData/{id}")
     public Employee updatePartialEmployeeData(@PathVariable int id, @RequestBody Map<String, Object> map) {
         return employeeService.updatePartialEmployeeData(id, map);
+    }
+
+    @GetMapping("/findBySalary/{salary}")
+    public Employee findBySalary(@PathVariable double salary) {
+        return employeeService.findBySalary(salary);
+    }
+
+    @GetMapping("/getSortedEmployeeBySalary")
+    public List<Employee> findSortedEmployeeBySalary() {
+        return employeeService.findSortedEmployeeBySalary();
     }
 }

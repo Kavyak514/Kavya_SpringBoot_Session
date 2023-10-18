@@ -1,7 +1,7 @@
-package com.kavya.kavya_springboot_session.Service;
+package com.kavya.kavya_springboot_session.service;
 
 import com.kavya.kavya_springboot_session.dto.Response;
-import com.kavya.kavya_springboot_session.model.Employee;
+import com.kavya.kavya_springboot_session.entity.Employee;
 import com.kavya.kavya_springboot_session.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,8 +32,7 @@ public class EmployeeService {
         return response;
     }
 
-
-    public List<Employee> getAllEmployee() {
+    public Iterable<Employee> getAllEmployee() {
         return employeeRepository.findAll();
     }
 
@@ -85,5 +84,13 @@ public class EmployeeService {
             return employeeRepository.save(employee2.get());
         }
         return null;
+    }
+
+    public Employee findBySalary(double salary){
+        return employeeRepository.findBySalary(salary);
+    }
+
+    public List<Employee> findSortedEmployeeBySalary(){
+        return employeeRepository.findSortedEmployeeBySalary();
     }
 }

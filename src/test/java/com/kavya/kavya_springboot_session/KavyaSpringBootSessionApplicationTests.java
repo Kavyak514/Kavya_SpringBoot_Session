@@ -9,5 +9,4 @@ class KavyaSpringBootSessionApplicationTests {
     @Test
     void contextLoads() {
     }
-
 }

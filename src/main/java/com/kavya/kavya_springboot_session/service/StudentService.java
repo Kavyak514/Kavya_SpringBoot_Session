@@ -1,6 +1,6 @@
-package com.kavya.kavya_springboot_session.Service;
+package com.kavya.kavya_springboot_session.service;
 
-import com.kavya.kavya_springboot_session.model.Student;
+import com.kavya.kavya_springboot_session.entity.Student;
 import com.kavya.kavya_springboot_session.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
