@@ -1,8 +1,8 @@
 package com.kavya.kavya_springboot_session.controller;
 
 import com.kavya.kavya_springboot_session.dto.Response;
-import com.kavya.kavya_springboot_session.service.StudentService;
 import com.kavya.kavya_springboot_session.entity.Student;
+import com.kavya.kavya_springboot_session.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

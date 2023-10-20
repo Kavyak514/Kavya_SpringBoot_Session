@@ -1,7 +1,6 @@
 package com.kavya.kavya_springboot_session.service;
 
 import com.kavya.kavya_springboot_session.dto.Response;
-import com.kavya.kavya_springboot_session.entity.Employee;
 import com.kavya.kavya_springboot_session.entity.LoginCredentials;
 import com.kavya.kavya_springboot_session.repository.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
