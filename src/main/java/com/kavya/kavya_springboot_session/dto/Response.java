@@ -1,6 +1,7 @@
 package com.kavya.kavya_springboot_session.dto;
 
 import com.kavya.kavya_springboot_session.entity.Employee;
+import com.kavya.kavya_springboot_session.entity.LoginCredentials;
 import com.kavya.kavya_springboot_session.entity.Student;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,4 +16,5 @@ public class Response {
     private Employee employee;
     private Student student;
     private List<Student> studentList;
+    private LoginCredentials loginCredentials;
 }
