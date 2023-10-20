@@ -28,13 +28,13 @@ public class OpenAPIConfig {
         contact.setName("CodeTalksDNA");
         contact.setUrl("https://www.codetalksdna.com");
 
-        License mitLicense = new License().name("MIT License").url("https://choosealicense.com/licenses/mit/");
+        License mitLicense = new License().name("CODE_TALKS License").url("https://codetalksdna.com/");
 
         Info info = new Info()
                 .title("Kavya Management API Endpoints")
                 .version("2.0")
                 .contact(contact)
-                .description("This API exposes endpoints to manage tutorials.").termsOfService("https://www.codetalksdna.com/terms")
+                .description("This API Exposes Taught During the Spring Boot Session.").termsOfService("https://www.codetalksdna.com/terms")
                 .license(mitLicense);
         return new OpenAPI().info(info).servers(List.of(devServer));
     }

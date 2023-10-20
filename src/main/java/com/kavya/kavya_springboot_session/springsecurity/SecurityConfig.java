@@ -38,7 +38,7 @@ public class SecurityConfig {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers("/saveCredentials", "/getEmployee").hasRole("ADMIN")
-                                .requestMatchers("/saveEmployee/**")
+                                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**")
                                 .authenticated())
                 .httpBasic(Customizer.withDefaults()).build();
     }
