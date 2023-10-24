@@ -20,32 +20,32 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @PostMapping("/saveEmployee")
+    @PostMapping("/employee/saveEmployee")
     public Response saveEmployee(@RequestBody Employee employee) {
         return employeeService.saveEmployee(employee);
     }
 
-    @GetMapping("/getEmployee")
+    @GetMapping("/employee/getEmployee")
     public Iterable<Employee> getAllEmployee() {
         return employeeService.getAllEmployee();
     }
 
-    @GetMapping(value = "/getEmployeeXmlFormat", produces = {"application/xml", "text/xml"}, consumes = MediaType.ALL_VALUE)
+    @GetMapping(value = "/employee/getEmployeeXmlFormat", produces = {"application/xml", "text/xml"}, consumes = MediaType.ALL_VALUE)
     public Iterable<Employee> getEmployeeXmlFormat() {
         return employeeService.getAllEmployee();
     }
 
-    @DeleteMapping("/deleteEmployee/{id}")
+    @DeleteMapping("/employee/deleteEmployee/{id}")
     public String deleteEmployee(@PathVariable int id) {
         return employeeService.deleteEmployee(id);
     }
 
-    @PutMapping("/updateEmployee")
+    @PutMapping("/employee/updateEmployee")
     public Employee updateEmployee(@RequestBody Employee employee) {
         return employeeService.updateEmployee(employee);
     }
 
-    @PatchMapping("/updatePartialEmployee")
+    @PatchMapping("/employee/updatePartialEmployee")
     public Employee updatePartialEmployee(@RequestBody Employee employee) {
         return employeeService.updatePartialEmployee(employee);
     }

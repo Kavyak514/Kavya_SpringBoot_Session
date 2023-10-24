@@ -17,22 +17,22 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @PostMapping("/createStudent")
+    @PostMapping("/student/createStudent")
     public Response createStudent(@RequestBody Student student) {
         return studentService.createStudent(student);
     }
 
-    @PutMapping("/updateStudent/{id}")
+    @PutMapping("/student/updateStudent/{id}")
     public String updateStudent(@PathVariable int id) {
         return studentService.updateStudent(id);
     }
 
-    @GetMapping("/getStudent")
+    @GetMapping("/student/getStudent")
     public Response getStudent() {
         return studentService.getStudent();
     }
 
-    @GetMapping("/getStudentById/{id}")
+    @GetMapping("/student/getStudentById/{id}")
     public Student getStudent(@PathVariable int id) {
         Optional<Student> student = studentService.getStudentById(id);
         return student.orElse(null);
