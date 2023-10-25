@@ -14,6 +14,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -32,14 +34,24 @@ public class SecurityConfig {
         return new InMemoryUserDetailsManager(admin, user);
     }
 
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        return http.csrf(AbstractHttpConfigurer::disable)
+//                .authorizeHttpRequests(auth ->
+//                        auth.requestMatchers("/**").hasAnyRole("ADMIN","USER")
+//                                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**")
+//                                .authenticated())
+//                .httpBasic(Customizer.withDefaults()).build();
+//    }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/**").hasAnyRole("ADMIN","USER")
-                                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**")
-                                .authenticated())
-                .httpBasic(Customizer.withDefaults()).build();
+        return http.csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests(auth -> {
+                    auth.requestMatchers("/**").permitAll();
+                    auth.anyRequest().authenticated();
+                }).oauth2Login(withDefaults()).
+                formLogin(withDefaults()).
+                build();
     }
 
     @Bean
