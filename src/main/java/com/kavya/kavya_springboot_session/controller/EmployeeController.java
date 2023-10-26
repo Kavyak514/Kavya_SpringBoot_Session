@@ -3,6 +3,8 @@ package com.kavya.kavya_springboot_session.controller;
 import com.kavya.kavya_springboot_session.dto.Response;
 import com.kavya.kavya_springboot_session.entity.Employee;
 import com.kavya.kavya_springboot_session.service.EmployeeService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +14,8 @@ import java.util.Map;
 
 @RestController
 public class EmployeeController {
+
+    Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 
     EmployeeService employeeService;
 
@@ -26,7 +30,8 @@ public class EmployeeController {
     }
 
     @GetMapping("/employee/getEmployee")
-    public Iterable<Employee> getAllEmployee() {
+    public List<Employee> getAllEmployee() {
+        logger.info("Get all employee Size:{}", employeeService.getAllEmployee().size());
         return employeeService.getAllEmployee();
     }
 

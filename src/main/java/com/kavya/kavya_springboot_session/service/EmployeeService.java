@@ -32,7 +32,7 @@ public class EmployeeService {
         return response;
     }
 
-    public Iterable<Employee> getAllEmployee() {
+    public List<Employee> getAllEmployee() {
         return employeeRepository.findAll();
     }
 
